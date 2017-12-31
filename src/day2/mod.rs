@@ -1,7 +1,7 @@
 // http://adventofcode.com/2017/day/2
-use std::env;
 use std::fs::File;
 use std::io::prelude::*;
+
 
 fn min(vec: &Vec<u32>) -> u32 {
 
@@ -48,13 +48,9 @@ fn find_divisor(line: &Vec<u32>) -> Option<u32> {
     }
 }
 
-pub fn run() {
-
-    let args: Vec<String> = env::args().collect();
-    let filename = &args[1];
+pub fn run(filename: &str) {
 
     let mut f = File::open(filename).expect("file not found");
-
     let mut input = String::new();
 
     f.read_to_string(&mut input)
@@ -80,7 +76,7 @@ pub fn run() {
     let result2 = input.split("\n")
         .map(|line| parse_line(line))
         .map(|line| {
-            
+
             match find_divisor(&line) {
                 None => 0,
                 Some(i) => i,

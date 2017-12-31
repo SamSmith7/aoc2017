@@ -1,11 +1,9 @@
 // http://adventofcode.com/2017/day/3
-use std::env;
 
 
-pub fn run() {
+pub fn run(input: &str) {
 
-    let args: Vec<String> = env::args().collect();
-    let target: u32 = args[1].parse().unwrap();
+    let target: u32 = input.parse().unwrap();
 
     let mut done: bool = false;
     let mut i: u32 = 1;
@@ -30,9 +28,9 @@ pub fn run() {
     let result: u32;
 
     if rem > i {
-        result = i + (rem - i) - 1;
+        result = rem - 1;
     } else {
-        result = i + (i - rem) - 1;
+        result = (2 * i) - rem - 1;
     }
 
     println!("Part1: {}", result);
